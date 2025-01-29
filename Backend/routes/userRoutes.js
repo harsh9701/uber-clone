@@ -3,7 +3,7 @@ const router = express.Router();
 const { body } = require("express-validator");
 
 const { registerUser, loginUser, getUserProfile, logoutUser } = require("../controllers/userController");
-const { userAuthentication } = require("../middlewares/userAuth");
+const { userAuthentication } = require("../middlewares/authMiddleware");
 
 router.post("/register", [
     body("email").isEmail().withMessage("Invalid Email"),

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const captainSchema = new mongoose.Schema({
     fullName: {
@@ -69,7 +69,11 @@ captainSchema.methods.generateAuthToken = function () {
 }
 
 captainSchema.methods.comparePassword = async function (password) {
-    return await bcrypt.compare(password.toString(), this.password);
+    try {
+        return await bcrypt.compare(password.toString(), this.password);
+    } catch (error) {
+        throw new Error("Password comparison failed");
+    }
 }
 
 captainSchema.statics.hashPassword = async function (password) {
