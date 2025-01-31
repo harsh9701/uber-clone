@@ -1,4 +1,4 @@
-import './Home.css';
+import './Tailwind.css';
 import uberLogo from '../assets/uberLogo.png';
 import { Link } from 'react-router-dom';
 
